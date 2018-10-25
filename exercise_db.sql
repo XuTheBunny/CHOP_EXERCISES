@@ -15,5 +15,10 @@ select count (id) as ‘Female patient  count (age above 30)’ from patient whe
 
 -- Bonus Data Exercise
 /*
-In the database, user email and password are stored directly inside the database as varcher(30) 
+1. Security issue with user information
+In the database, user email and password are stored directly inside the database as varchar(30), this brings in a potential security issue. Especially, if later on, we want to share this database with the larger team or push to open source, the user information may get exposed. I would recommend having the framework to handle user authentication and only store token inside the database. 
+2. Change field type to restrict input
+Some columns can be set to a different data type to restrict data input. In table hiv_details, column 'stage_adult' for example; if the input cases would only be "WHO STAGE # ADULT"(# stands for an integer here) or null, we could store just the integer in this column. Saving "WHO STAGE 4 ADULT" as varchar(30) is queryable; however the column itself does not have any restriction to valid the data input. By storing it as an integer, it supports the basic functions, but also eliminate some potential errors. This change may also help with database storage efficiency.
+3. Normalize data entries by mapping to standard ID
+In the database vaccine, diagnosis, drug have synonyms; it is crucial to track all the synonyms especially when referencing other resources. To enhance the normalization of those entities, we can try to find a standard ID (accepted by the community) and include that into the database. For example, drugs have National Drug Code (NDC) used in US or Drug Identification Number (DIN) used in Canada to uniquely identify medications. We can include 'NDC' column in the drug table to store this information. This change will reduce the ambiguous when referencing to a specific drug. 
 */
