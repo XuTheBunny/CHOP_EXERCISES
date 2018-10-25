@@ -84,29 +84,17 @@ Please provide both the data result as well as any code that was run to obtain t
 
 Provide a list of male patients in the database and the counts of patients by gender.
 
-select * from patient where gender = ‘M’;
-select (select count (id)  from patient where gender = ‘F’) as ‘Female Count’ , (select count (id) from patient where gender = ‘M’) as ‘Male Count’ ;
-
-
 ### Data Exercise 2
 
-Count patients in database diagnosed with DERMATITIS at an encounter.
-
-select count (distinct patient_id) as ‘DERMATITIS patient count’ from encounter where id in (select encounter_id from encounter_diagnosis where diagnosis_id = (select id from diagnosis where name = ‘DERMATITIS’));
-
+Count patients in database diagnosed with DERMITITIS at an encounter.
 
 ### Data Exercise 3
 
 Provide a list patients, by MRN, who have had a CD4 count of less than 300.
 
-select * from patient where id in (select distinct patient_id from encounter where id in (select encounter_id from lab_result where cd4 < 500)) order by mrn; 
-
 ### Data Exercise 4
 
 Count all female patients above the age of 30 in the database as of today’s date
-
-select count (id) as ‘Female patient  count (age above 30)’ from patient where (gender = ‘F’ and birthdate < (select date(‘now’, ‘-30 years’)));
-
 
 ### Bonus Data Exercise
 
