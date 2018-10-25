@@ -86,7 +86,7 @@ Provide a list of male patients in the database and the counts of patients by ge
 
 ### Data Exercise 2
 
-Count patients in database diagnosed with DERMITITIS at an encounter.
+Count patients in database diagnosed with DERMATITIS at an encounter.
 
 ### Data Exercise 3
 
